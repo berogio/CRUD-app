@@ -1,15 +1,48 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(
+    import.meta.url);
+
+const __dirname = path.dirname(__filename);
 const app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+
+
 const book = JSON.parse(fs.readFileSync('books.json').toString())
 
-app.get('/', (request, response, next) => {
-    console.log('Request route')
-    response.send('Haloo Express JS')
+
+app.get('/form', (req, res, next) => {
+    res.sendFile(__dirname + '/index.html')
+
 });
+
+
+app.post('/form', (req, res, next) => {
+    const newBook = req.body
+    book.push(newBook)
+    fs.writeFileSync('books.json', JSON.stringify(book))
+    res.send('Book Added')
+})
+
+
+
+app.get('/', (req, res, next) => {
+
+    console.log('Request route')
+    res.send('Haloo Express JS')
+});
+
+
+
+
 app.get('/books', (request, response, next) => {
     const genre = request.query.genre;
     console.log(genre);
