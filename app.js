@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 const book = JSON.parse(fs.readFileSync('books.json').toString())
 
 app.get('/', (request, response, next) => {
-    console.log('request route')
+    console.log('Request route')
     response.send('Haloo Express JS')
 });
 app.get('/books', (request, response, next) => {
