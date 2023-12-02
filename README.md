@@ -26,3 +26,5 @@ To run this CRUD App locally, follow these steps:
 
    ```bash
    git clone https://github.com/berogio/CRUD-app.git
+- Author Giorgi Beridze [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?logo=linkedin&logoColor=white&style=flat)](https://www.linkedin.com/in/giorgi-beridze-427902238/)
+- **Have fun building!** 🚀
